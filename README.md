@@ -20,6 +20,8 @@
 - تنويه: التوقيت غالباً UTC وليس التوقيت المحلي للبرازيل
 
 ## SQL Queries المستخدمة
+
+### الصيف (يونيو، يوليو، أغسطس)
 ```sql
 SELECT strftime('%H', order_purchase_timestamp) AS hour, COUNT(*) AS total_orders
 FROM olist_orders_dataset
@@ -28,4 +30,33 @@ GROUP BY hour
 ORDER BY total_orders DESC
 LIMIT 3;
 ```
-*(كرر نفس الاستعلام لكل فصل بتغيير الشهور بس)*
+
+### الربيع (مارس، أبريل، مايو)
+```sql
+SELECT strftime('%H', order_purchase_timestamp) AS hour, COUNT(*) AS total_orders
+FROM olist_orders_dataset
+WHERE strftime('%m', order_purchase_timestamp) IN ('03','04','05')
+GROUP BY hour
+ORDER BY total_orders DESC
+LIMIT 3;
+```
+
+### الشتاء (ديسمبر، يناير، فبراير)
+```sql
+SELECT strftime('%H', order_purchase_timestamp) AS hour, COUNT(*) AS total_orders
+FROM olist_orders_dataset
+WHERE strftime('%m', order_purchase_timestamp) IN ('12','01','02')
+GROUP BY hour
+ORDER BY total_orders DESC
+LIMIT 3;
+```
+
+### الخريف (سبتمبر، أكتوبر، نوفمبر)
+```sql
+SELECT strftime('%H', order_purchase_timestamp) AS hour, COUNT(*) AS total_orders
+FROM olist_orders_dataset
+WHERE strftime('%m', order_purchase_timestamp) IN ('09','10','11')
+GROUP BY hour
+ORDER BY total_orders DESC
+LIMIT 3;
+```
