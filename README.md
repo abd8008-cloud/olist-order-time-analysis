@@ -19,6 +19,9 @@
 - الشتاء والخريف: الذروة أبكر (14 و13) - يجب إطلاق العروض أبكر بهذين الفصلين
 - تنويه: التوقيت غالباً UTC وليس التوقيت المحلي للبرازيل
 
+## Live Dashboard
+[View interactive dashboard on Looker Studio](https://datastudio.google.com/reporting/76fb6142-b90a-414e-a9a2-d54e64307d42)
+
 ## SQL Queries المستخدمة
 
 ### الصيف (يونيو، يوليو، أغسطس)
