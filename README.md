@@ -86,3 +86,25 @@ print(result)
 | 15 | 6454 |
 
 النتائج مطابقة 100% للتحليل بـ SQL، ما يؤكد صحة المنهجية بأداتين مختلفتين.
+
+## Additional Analysis: Payment Method Distribution
+سؤال إضافي: ما هي طريقة الدفع الأكثر استخداماً بين عملاء Olist؟
+
+```python
+import pandas as pd
+
+payment_df = pd.read_csv('olist_order_payments_dataset.csv')
+result4 = payment_df.groupby('payment_type').size().sort_values(ascending=False)
+print(result4)
+```
+
+**النتيجة:**
+| طريقة الدفع | عدد المدفوعات |
+|---|---|
+| بطاقة ائتمان (credit_card) | 76,795 |
+| فاتورة دفع محلية (boleto) | 19,784 |
+| قسيمة (voucher) | 5,775 |
+| بطاقة خصم (debit_card) | 1,529 |
+| غير محدد | 3 |
+
+**الاستنتاج:** بطاقة الائتمان هي الطريقة المهيمنة بوضوح (أكثر من 73% من إجمالي المدفوعات) - أي استراتيجية تركز على تجربة الدفع يجب أن تعطي الأولوية القصوى لدعم ومرونة الدفع بالبطاقة الائتمانية.
