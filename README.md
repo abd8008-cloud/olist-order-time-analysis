@@ -63,3 +63,26 @@ GROUP BY hour
 ORDER BY total_orders DESC
 LIMIT 3;
 ```
+
+## Python Verification (Pandas)
+لتأكيد صحة النتائج، تم إعادة نفس التحليل باستخدام Python (Pandas) على نفس البيانات الخام - النتائج تطابقت تماماً مع SQL.
+
+```python
+import pandas as pd
+
+orders_df = pd.read_csv('olist_orders_dataset.csv')
+orders_df['hour'] = pd.to_datetime(orders_df['order_purchase_timestamp']).dt.hour
+result = orders_df.groupby('hour').size().sort_values(ascending=False)
+print(result)
+```
+
+**النتيجة (أعلى 5 ساعات):**
+| الساعة | عدد الطلبات |
+|---|---|
+| 16 | 6675 |
+| 11 | 6578 |
+| 14 | 6569 |
+| 13 | 6518 |
+| 15 | 6454 |
+
+النتائج مطابقة 100% للتحليل بـ SQL، ما يؤكد صحة المنهجية بأداتين مختلفتين.
