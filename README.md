@@ -108,3 +108,32 @@ print(result4)
 | غير محدد | 3 |
 
 **الاستنتاج:** بطاقة الائتمان هي الطريقة المهيمنة بوضوح (أكثر من 73% من إجمالي المدفوعات) - أي استراتيجية تركز على تحسين عملية الدفع ببطاقة الائتمان ستؤثر بشكل كبير على رضا العملاء.
+
+## Additional Analysis: Top Customer Cities
+سؤال إضافي: ما هي المدن الأكثر من حيث عدد العملاء؟
+
+\`\`\`python
+import pandas as pd
+
+customers_df = pd.read_csv('olist_customers_dataset.csv')
+result5 = customers_df.groupby('customer_city').size().sort_values(ascending=False)
+print(result5.head(10))
+\`\`\`
+
+**النتيجة (أعلى 10 مدن):**
+| المدينة | عدد العملاء |
+|---|---|
+| São Paulo | 15,540 |
+| Rio de Janeiro | 6,882 |
+| Belo Horizonte | 2,773 |
+| Brasília | 2,131 |
+| Curitiba | 1,521 |
+| Campinas | 1,444 |
+| Porto Alegre | 1,379 |
+| Salvador | 1,245 |
+| Guarulhos | 1,189 |
+| São Bernardo do Campo | 938 |
+
+**الاستنتاج:** São Paulo تهيمن بوضوح على قاعدة العملاء (ضعف المدينة الثانية تقريباً) - أي قرار توسع لوجستي أو تسويقي يجب أن يعطي الأولوية القصوى لهذه المدينة.
+
+**ملاحظة تقنية:** تم إجراء هذا التحليل عبر Kaggle Notebooks (بدلاً من Google Colab) للاستفادة من الربط المباشر والدائم بالبيانات، دون الحاجة لإعادة الرفع في كل جلسة.
